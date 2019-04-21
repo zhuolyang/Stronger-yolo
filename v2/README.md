@@ -1,5 +1,7 @@
+# Initial with Darknet53-448.weights
 ## Performance(Better performance than [Tencent's](https://github.com/TencentYoutuResearch/ObjectDetection-OneStageDet/tree/master/yolo) reimplementation)<br>
-test datasets: Pascal VOC 2007<br>
+train dataset: VOC 2012 + VOC 2007<br>
+test dataset: VOC 2007<br>
 test size: 544<br>
 test code: [Faster rcnn](https://github.com/rbgirshick/py-faster-rcnn/blob/master/lib/datasets/voc_eval.py) (not use 07 metric)<br>
 test score threshold: 0.01<br>
@@ -20,10 +22,6 @@ test score threshold: 0.01<br>
    <tr><td>multi scale test</td><td>85.8</td><td>2.5</td><td>yes</td></tr>
 </table>
 
-## To do
-- [ ] MobileNet<br>
-- [ ] Model compression<br>
-
 ## Usage
 1. clone YOLO_v3 repository
     ``` bash
@@ -41,6 +39,7 @@ test score threshold: 0.01<br>
     |--stronger-yolo<br>
     |--|--v1<br>
     |--|--v2<br>
+    |--|--v3<br>
     |--data<br>
     |--|--VOC<br>
     |--|--|--2012_trainval<br>
@@ -57,7 +56,7 @@ test score threshold: 0.01<br>
     ```
 3. prepare initial weights<br>
     Download [darknet53_448.weights](https://pjreddie.com/media/files/darknet53_448.weights) firstly, 
-    put the yolov3.weights into `darknet2tf/`, and then 
+    put the initial weights into `darknet2tf/`, and then 
     ```bash
     cd darknet2tf
     python3 convert_weights.py --weights_file=darknet53_448.weights --data_format=NHWC
@@ -72,7 +71,7 @@ test score threshold: 0.01<br>
     **If you want to get a higher mAP, you can set the score threshold to 0.01、use multi scale test、flip test.<br>
     If you want to use it in actual projects, or if you want speed, you can set the score threshold to 0.2.<br>**
     ``` bash
-    nohup python test.py --gpu=0 --test_weight=weights_file=model_path.ckpt -t07 &
+    nohup python test.py --gpu=0 --test_weight=model_path.ckpt -t07 &
     ```
      
 ## Reference:<br>
@@ -96,4 +95,4 @@ software
 - Opencv3.4.1 <br>
 
 hardware
-- 12G 1080Ti
+- 16G 1080Ti

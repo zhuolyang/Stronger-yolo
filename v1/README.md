@@ -1,5 +1,7 @@
+# Initial with YOLOV3-608.weights
 ## Performance<br>
-test datasets: Pascal VOC 2007<br>
+train dataset: VOC 2012 + VOC 2007<br>
+test dataset: VOC 2007<br>
 test size: 544<br>
 test code: [mAP](https://github.com/Cartucho/mAP) (not use 07 metric)<br>
 test score threshold: 0.01<br>
@@ -35,6 +37,7 @@ test score threshold: 0.01<br>
     |--stronger-yolo<br>
     |--|--v1<br>
     |--|--v2<br>
+    |--|--v3<br>
     |--data<br>
     |--|--VOC<br>
     |--|--|--2012_trainval<br>
